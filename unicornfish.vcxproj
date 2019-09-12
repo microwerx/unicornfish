@@ -123,6 +123,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\unicornfish.hpp" />
+    <ClInclude Include="include\unicornfish_broker.hpp" />
+    <ClInclude Include="include\unicornfish_client.hpp" />
+    <ClInclude Include="include\unicornfish_corona.hpp" />
+    <ClInclude Include="include\unicornfish_corona_job.hpp" />
+    <ClInclude Include="include\unicornfish_corona_scene_file.hpp" />
+    <ClInclude Include="include\unicornfish_curl.hpp" />
+    <ClInclude Include="include\unicornfish_frame.hpp" />
+    <ClInclude Include="include\unicornfish_majordomo.hpp" />
+    <ClInclude Include="include\unicornfish_message.hpp" />
+    <ClInclude Include="include\unicornfish_socket.hpp" />
+    <ClInclude Include="include\unicornfish_worker.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\unicornfish.cpp" />
+    <ClCompile Include="src\unicornfish_broker.cpp" />
+    <ClCompile Include="src\unicornfish_client.cpp" />
+    <ClCompile Include="src\unicornfish_corona_job.cpp" />
+    <ClCompile Include="src\unicornfish_corona_scene_file.cpp" />
+    <ClCompile Include="src\unicornfish_curl.cpp" />
+    <ClCompile Include="src\unicornfish_fluxions_corona.cpp" />
+    <ClCompile Include="src\unicornfish_frame.cpp" />
+    <ClCompile Include="src\unicornfish_majordomo.cpp" />
+    <ClCompile Include="src\unicornfish_message.cpp" />
+    <ClCompile Include="src\unicornfish_socket.cpp" />
+    <ClCompile Include="src\unicornfish_worker.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
