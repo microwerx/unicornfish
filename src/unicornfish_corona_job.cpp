@@ -16,12 +16,11 @@
 // along with this program.If not, see <https://www.gnu.org/licenses/>.
 //
 // For any other type of licensing, please contact me at jmetzgar@outlook.com
-#include "pch.hpp"
-#include <fluxions_corona_scene_file.hpp>
 #include <fluxions_fileio.hpp>
 #include <fluxions_xml.hpp>
+#include <unicornfish_corona_scene_file.hpp>
 
-namespace Fluxions
+namespace Uf
 {
 	//static const std::string corona_conf_prefix("../corona_conf/");
 	//static const std::string corona_export_prefix("corona_export/");

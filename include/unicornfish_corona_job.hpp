@@ -21,10 +21,11 @@
 
 #include <string>
 #include <fluxions_gte.hpp>
+#include <fluxions_gte_spherical_harmonic.hpp>
 #include <fluxions_simple_scene_graph.hpp>
-#include <fluxions_corona_scene_file.hpp>
+#include <unicornfish_corona_scene_file.hpp>
 
-namespace Fluxions
+namespace Uf
 {
 	class CoronaJob
 	{
