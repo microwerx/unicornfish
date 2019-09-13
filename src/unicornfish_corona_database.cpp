@@ -21,7 +21,7 @@
 #include <iostream>
 #include <sstream>
 #include <fluxions_obj_static_model.hpp>
-#include <unicornfish_corona.hpp>
+#include <unicornfish_corona_database.hpp>
 
 template class std::vector<Fluxions::OBJStaticModel::Vertex>;
 template class std::vector<GLuint>;

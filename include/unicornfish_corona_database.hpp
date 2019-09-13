@@ -16,8 +16,8 @@
 // along with this program.If not, see <https://www.gnu.org/licenses/>.
 //
 // For any other type of licensing, please contact me at jmetzgar@outlook.com
-#ifndef FLUXIONS_CORONA_HPP
-#define FLUXIONS_CORONA_HPP
+#ifndef FLUXIONS_CORONA_DATABASE_HPP
+#define FLUXIONS_CORONA_DATABASE_HPP
 
 #include <string>
 #include <vector>

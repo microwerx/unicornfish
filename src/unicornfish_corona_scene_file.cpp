@@ -145,6 +145,7 @@ namespace Uf
 	}
 
 	bool CoronaSceneFile::WriteSphlVizSCN(const std::string& filename, const Fluxions::SimpleSceneGraph& ssg, int sourceLightIndex, int receivingLightIndex) {
+		SSG_SSPHHRendererPlugin ssphh = dynamic_cast<SSG_SSPHHRendererPlugin>(ssg.userdata);
 		int lastIndex = (int)ssg.ssphhLights.size() - 1;
 		if (!within(sourceLightIndex, -1, lastIndex) || !within(receivingLightIndex, -1, lastIndex)) {
 			return false;
