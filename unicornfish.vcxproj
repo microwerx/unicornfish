@@ -150,7 +150,7 @@
     <ClCompile Include="src\unicornfish_corona_job.cpp" />
     <ClCompile Include="src\unicornfish_corona_scene_file.cpp" />
     <ClCompile Include="src\unicornfish_curl.cpp" />
-    <ClCompile Include="src\unicornfish_fluxions_corona.cpp" />
+    <ClCompile Include="src\unicornfish_corona.cpp" />
     <ClCompile Include="src\unicornfish_frame.cpp" />
     <ClCompile Include="src\unicornfish_majordomo.cpp" />
     <ClCompile Include="src\unicornfish_message.cpp" />

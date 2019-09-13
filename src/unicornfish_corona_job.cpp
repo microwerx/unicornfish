@@ -18,6 +18,8 @@
 // For any other type of licensing, please contact me at jmetzgar@outlook.com
 #include <fluxions_fileio.hpp>
 #include <fluxions_xml.hpp>
+#include <fluxions_gte_spherical_harmonic.hpp>
+#include <unicornfish_corona_job.hpp>
 #include <unicornfish_corona_scene_file.hpp>
 
 namespace Uf
@@ -51,7 +53,7 @@ namespace Uf
 		switch (jobtype)
 		{
 		case Type::GEN:
-			sendLight = SphlSunIndex;
+			sendLight = Fluxions::SphlSunIndex;
 			recvLight = arg1;
 			conf_path = confPathPrefix + "sphlgen.conf";
 			hq_conf_path = confPathPrefix + "sphlgen_hq.conf";
@@ -77,7 +79,7 @@ namespace Uf
 	{
 	}
 
-	void CoronaJob::Start(CoronaSceneFile &coronaScene, SimpleSceneGraph &ssg)
+	void CoronaJob::Start(CoronaSceneFile &coronaScene, Fluxions::SimpleSceneGraph &ssg)
 	{
 		if (state != State::Ready)
 		{
@@ -86,7 +88,7 @@ namespace Uf
 
 		if (!ignoreCache)
 		{
-			FilePathInfo fpi(isHQ ? hq_output_path_exr : output_path_exr);
+			Fluxions::FilePathInfo fpi(isHQ ? hq_output_path_exr : output_path_exr);
 			if (fpi.Exists())
 			{
 				state = State::Finished;
@@ -168,7 +170,7 @@ namespace Uf
 #endif
 	}
 
-	void CoronaJob::CopySPH(const Sph4f &sph_)
+	void CoronaJob::CopySPH(const Fluxions::Sph4f &sph_)
 	{
 		if (!IsFinished() && !IsGEN() && !IsVIZ())
 			return;
@@ -182,9 +184,9 @@ namespace Uf
 		}
 	}
 
-	void CoronaJob::CopySPHToSph4f(Sph4f &sph_)
+	void CoronaJob::CopySPHToSph4f(Fluxions::Sph4f &sph_)
 	{
-		sph_.resize(MaxSphlDegree);
+		sph_.resize(Fluxions::MaxSphlDegree);
 		for (size_t i = 0; i < sph_.size(); i++)
 		{
 			sph_.r().setCoefficient(i, sph[121 * 0 + i]);

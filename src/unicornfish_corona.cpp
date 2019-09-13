@@ -16,20 +16,19 @@
 // along with this program.If not, see <https://www.gnu.org/licenses/>.
 //
 // For any other type of licensing, please contact me at jmetzgar@outlook.com
-#include "pch.hpp"
 #include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
-#include <fluxions_corona.hpp>
-#include <fluxions.hpp>
+#include <fluxions_obj_static_model.hpp>
+#include <unicornfish_corona.hpp>
 
 template class std::vector<Fluxions::OBJStaticModel::Vertex>;
 template class std::vector<GLuint>;
 template class std::vector<Fluxions::OBJStaticModel::Surface>;
 template class std::map<std::string, Fluxions::OBJStaticModel>;
 
-namespace Fluxions
+namespace Uf
 {
 
 	CoronaDatabase::CoronaDatabase() {}
@@ -42,7 +41,7 @@ namespace Fluxions
 
 	void CoronaDatabase::BuildBuffers() {
 		renderer.Reset();
-		std::map<std::string, OBJStaticModel>::iterator modelIt;
+		std::map<std::string, Fluxions::OBJStaticModel>::iterator modelIt;
 		for (modelIt = models.begin(); modelIt != models.end(); modelIt++) {
 			modelIt->second.Render(renderer);
 		}
@@ -57,4 +56,4 @@ namespace Fluxions
 		renderer.RenderZOnly();
 	}
 
-} // namespace Fluxions
+} // namespace Uf

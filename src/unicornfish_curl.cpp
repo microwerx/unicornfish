@@ -18,6 +18,7 @@
 // For any other type of licensing, please contact me at jmetzgar@outlook.com
 
 #include <unicornfish_curl.hpp>
+#include <hatchetfish.hpp>
 
 namespace Uf
 {

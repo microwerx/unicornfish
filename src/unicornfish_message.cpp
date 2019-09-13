@@ -221,7 +221,7 @@ void Message::PopMem(void *data, size_t size)
     if (!msg)
         return;
     Frame &frame = PopFrame();
-    memcpy(data, frame.GetData(), std::min(size, frame.SizeInBytes()));
+    memcpy(data, frame.GetData(), min(size, frame.SizeInBytes()));
 }
 
 const std::string &Message::GetLastFrameString()

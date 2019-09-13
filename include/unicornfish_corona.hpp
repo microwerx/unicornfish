@@ -28,14 +28,14 @@
 #include <fluxions_bbox.hpp>
 #include <fluxions_precompiled_models.hpp>
 
-namespace Fluxions
+namespace Uf
 {
 	class CoronaDatabase
 	{
 	private:
 	public:
-		SimpleRenderer_GLuint renderer;
-		std::map<std::string, SimpleStaticMesh> models;
+		Fluxions::SimpleRenderer_GLuint renderer;
+		std::map<std::string, Fluxions::OBJStaticModel> models;
 
 		CoronaDatabase();
 		~CoronaDatabase();

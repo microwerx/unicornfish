@@ -54,8 +54,8 @@ namespace Uf
 		void DisableHQ() { isHQ = false; }
 		constexpr bool IsHQ() const { return isHQ; }
 
-		constexpr void SetMaxRayDepth(int depth) { maxRayDepth = clamp(depth, 1, 50); }
-		constexpr void SetPassLimit(int limit) { passLimit = clamp(limit, 1, 100); }
+		constexpr void SetMaxRayDepth(int depth) { maxRayDepth = Fluxions::clamp(depth, 1, 50); }
+		constexpr void SetPassLimit(int limit) { passLimit = Fluxions::clamp(limit, 1, 100); }
 
 		constexpr void SetIgnoreCache(bool bState) { ignoreCache = bState; }
 
@@ -75,8 +75,8 @@ namespace Uf
 
 		constexpr void SetImageDimensions(int w, int h)
 		{
-			imageWidth = clamp(w, 0, 8192);
-			imageHeight = clamp(h, 0, 8192);
+			imageWidth = Fluxions::clamp(w, 0, 8192);
+			imageHeight = Fluxions::clamp(h, 0, 8192);
 		}
 
 		constexpr double GetElapsedTime() const { return elapsedTime; }
@@ -117,9 +117,9 @@ namespace Uf
 			return -1;
 		}
 
-		void Start(CoronaSceneFile &coronaScene, SimpleSceneGraph &ssg);
-		void CopySPH(const Sph4f &sph);
-		void CopySPHToSph4f(Sph4f &sph);
+		void Start(CoronaSceneFile &coronaScene, Fluxions::SimpleSceneGraph &ssg);
+		void CopySPH(const Fluxions::Sph4f &sph);
+		void CopySPHToSph4f(Fluxions::Sph4f &sph);
 		const int GetCoronaRetval() const { return lastCoronaRetval; }
 		const int GetConvertRetval() const { return lastConvertRetval; }
 

@@ -71,9 +71,6 @@
     <ClCompile Include="src\unicornfish_curl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\unicornfish_fluxions_corona.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\unicornfish_frame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -87,6 +84,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\unicornfish_worker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\unicornfish_corona.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
