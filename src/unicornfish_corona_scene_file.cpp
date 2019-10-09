@@ -22,6 +22,8 @@
 #include <fluxions_xml.hpp>
 #include <unicornfish_corona_job.hpp>
 #include <unicornfish_corona_scene_file.hpp>
+#include <fluxions_ssg_ssphh_renderer_plugin.hpp>
+#include <fluxions_simple_point_light.hpp>
 
 namespace Uf
 {
@@ -145,8 +147,13 @@ namespace Uf
 	}
 
 	bool CoronaSceneFile::WriteSphlVizSCN(const std::string& filename, const Fluxions::SimpleSceneGraph& ssg, int sourceLightIndex, int receivingLightIndex) {
-		SSG_SSPHHRendererPlugin ssphh = dynamic_cast<SSG_SSPHHRendererPlugin>(ssg.userdata);
-		int lastIndex = (int)ssg.ssphhLights.size() - 1;
+		SSG_SSPHHRendererPlugin *ssphh = dynamic_cast<SSG_SSPHHRendererPlugin*>(ssg.userdata);
+		if (!ssphh) {
+			HFLOGERROR("ssphh pointer is null");
+			return false;
+		}
+
+		int lastIndex = (int)ssphh->ssphhLights.size() - 1;
 		if (!within(sourceLightIndex, -1, lastIndex) || !within(receivingLightIndex, -1, lastIndex)) {
 			return false;
 		}
@@ -166,7 +173,7 @@ namespace Uf
 			SetCubeMapCamera(position, Fluxions::Vector3f(0.0f, 0.0f, 0.0f), Fluxions::Vector3f(0.0f, 1.0f, 0.0f));
 		}
 		else {
-			const SimpleSSPHHLight& sphl2 = ssg.ssphhLights[receivingLightIndex];
+			const SimpleSSPHHLight& sphl2 = ssphh->ssphhLights[receivingLightIndex];
 			Fluxions::Vector3f tmp = sphl2.position.xyz();
 			Fluxions::Vector3f position(tmp.x, -tmp.z, tmp.y);
 			Fluxions::Vector3f target(position.x, position.y - 1.0f, position.z);
@@ -181,7 +188,7 @@ namespace Uf
 			writeSun(fout, ssg);
 		}
 		else {
-			const SimpleSSPHHLight& sphl1 = ssg.ssphhLights[sourceLightIndex];
+			const SimpleSSPHHLight& sphl1 = ssphh->ssphhLights[sourceLightIndex];
 			Fluxions::Matrix4f lightMatrix(
 				0.1f, 0.0f, 0.0f, sphl1.position.x,
 				0.0f, 0.1f, 0.0f, -sphl1.position.z,

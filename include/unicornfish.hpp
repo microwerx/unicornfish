@@ -24,6 +24,10 @@
 #pragma comment(lib, "libzmq.lib")
 #pragma comment(lib, "libczmq.lib")
 #pragma comment(lib, "libcurl_a.lib")
+#pragma comment(lib, "fluxions.lib")
+#pragma comment(lib, "fluxions-gte.lib")
+#pragma comment(lib, "fluxions-deps.lib")
+#pragma comment(lib, "hatchetfish.lib")
 #endif
 
 #include <string>
@@ -31,16 +35,19 @@
 #include <list>
 #include <memory>
 #include <inttypes.h>
-#include <sodium.h>
 #include <zmq.h>
 #include <czmq.h>
-#ifdef _WIN32
-#define CURL_STATICLIB
-#endif
-#include <curl/curl.h>
+
+//#ifdef _WIN32
+//#define CURL_STATICLIB
+//#endif
+//#include <sodium.h>
+//#include <curl/curl.h>
 
 namespace Uf
 {
+	bool Init();
+	bool Kill();
 }
 
 #endif

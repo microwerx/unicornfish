@@ -59,7 +59,7 @@ namespace Uf
 		Fluxions::Vector3f cameraTarget;
 		Fluxions::Vector3f cameraRoll;
 		Fluxions::Matrix4f cameraMatrix;
-		float cameraHorizontalFieldOfViewInDegrees;
+		float cameraHorizontalFieldOfViewInDegrees = 45.0f;
 
 		void writeCamera(std::ostream& ostr);
 		void writeSun(std::ostream& ostr, const Fluxions::SimpleSceneGraph& ssg);

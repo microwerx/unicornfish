@@ -21,30 +21,36 @@
 
 #include <string>
 #include <future>
+#ifdef _WIN32
+#define CURL_STATICLIB
+#endif
+#include <sodium.h>
+#include <curl/curl.h>
+
 #include <unicornfish.hpp>
 
 namespace Uf
 {
 
-class Curl
-{
-  public:
-	using StringTimePair = std::pair<std::string, double>;
-	using StringTimePairFuture = std::future<std::pair<std::string, double>>;
+	class Curl
+	{
+	public:
+		using StringTimePair = std::pair<std::string, double>;
+		using StringTimePairFuture = std::future<std::pair<std::string, double>>;
 
-	Curl();
-	~Curl();
+		Curl();
+		~Curl();
 
-	std::string Get(const std::string &url);
-	StringTimePairFuture AsyncGet(const std::string &url);
+		std::string Get(const std::string& url);
+		StringTimePairFuture AsyncGet(const std::string& url);
 
-  private:
-	CURL *curl;
-	std::string get_data;
-	std::string post_data;
+	private:
+		CURL* curl;
+		std::string get_data;
+		std::string post_data;
 
-	static size_t write_callback(char *buffer, size_t size, size_t nitems, void *instream);
-};
+		static size_t write_callback(char* buffer, size_t size, size_t nitems, void* instream);
+	};
 } // namespace Uf
 
 #endif

@@ -126,11 +126,6 @@ namespace Uf
 		std::string MakeCoronaCommandLine();
 		std::string MakeConvertCommandLine();
 
-		static std::string MakeREFName(const std::string &prefix, bool isCubeMap, bool isHDR = false, bool isHQ = false, bool ks = false, int MaxRayDepth = 5, int PassLimit = 1);
-		static std::string MakeVIZName(const std::string &prefix, int srcLightIndex, int recvLightIndex, bool isHDR = false, bool isHQ = false, bool ks = false, int MaxRayDepth = 5, int PassLimit = 1);
-		static std::string MakeGENName(const std::string &prefix, int recvLightIndex, bool isHDR = false, bool isHQ = false, bool ks = false, int MaxRayDepth = 5, int PassLimit = 1);
-		static std::string MakeHIERName(const std::string &prefix, int sendLightIndex, int MaxDegrees);
-
 		constexpr bool IsJobFinished() const { return finished; }
 		constexpr void MarkJobFinished() { finished = true; }
 		constexpr void MarkJobUnfinished()
