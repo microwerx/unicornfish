@@ -23,7 +23,7 @@
 #pragma comment(lib, "libsodium.lib")
 #pragma comment(lib, "libzmq.lib")
 #pragma comment(lib, "libczmq.lib")
-#pragma comment(lib, "libcurl_a.lib")
+#pragma comment(lib, "libcurl.lib")
 #pragma comment(lib, "fluxions.lib")
 #pragma comment(lib, "fluxions-gte.lib")
 #pragma comment(lib, "fluxions-deps.lib")

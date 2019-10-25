@@ -277,7 +277,7 @@ namespace Uf
 		// XmlString(ostr, "mtllib", "ssphh_lights.mtl", 1) << std::endl;
 
 		const float size = 0.1f;
-		for (size_t i = 0; i < ssg.pointLights.size(); i++) {
+		for (unsigned i = 0; i < ssg.pointLights.size(); i++) {
 			const SimplePointLight& pointLight = ssg.pointLights[i];
 			Fluxions::Matrix4f lightMatrix(
 				size, 0.0f, 0.0f, pointLight.position.x,
@@ -315,7 +315,7 @@ namespace Uf
 		XmlEndTag(fout, "mapDefinition", 1) << std::endl
 			<< std::endl;
 
-		for (size_t i = 0; i < ssg.pointLights.size(); i++) {
+		for (unsigned i = 0; i < ssg.pointLights.size(); i++) {
 			std::ostringstream name;
 			name << "PointLight" << i;
 			XmlBeginTag(fout, "materialDefinition", "name", name.str(), 1) << std::endl;
@@ -353,7 +353,7 @@ namespace Uf
 			std::string mtl_name;
 			int obj_count = 0;
 			auto it = ssg.geometry.cbegin();
-			for (size_t i = 0; i < ssg.geometry.size(); i++, it++) {
+			for (unsigned i = 0; i < ssg.geometry.size(); i++, it++) {
 				const SimpleGeometryGroup& sgo = it->second;
 				const OBJStaticModel& obj = ssg.geometryObjects[sgo.objectId];
 
@@ -541,9 +541,9 @@ namespace Uf
 
 		std::string last_mtllib;
 		std::string mtl_name;
-		// size_t obj_count = 0;
+		// unsigned obj_count = 0;
 		auto it = ssg.geometry.cbegin();
-		for (size_t i = 0; i < ssg.geometry.size(); i++, it++) {
+		for (unsigned i = 0; i < ssg.geometry.size(); i++, it++) {
 			const SimpleGeometryGroup& sgo = it->second;
 			const OBJStaticModel& obj = ssg.geometryObjects[sgo.objectId];
 
@@ -816,7 +816,7 @@ namespace Uf
 	//		if (!IsFinished() && !IsGEN() && !IsVIZ())
 	//			return;
 	//		memset(sph, 0, sizeof(float) * 484);
-	//		for (size_t i = 0; i < sph_.size(); i++)
+	//		for (unsigned i = 0; i < sph_.size(); i++)
 	//		{
 	//			sph[121 * 0 + i] = sph_.r().getCoefficient(i);
 	//			sph[121 * 1 + i] = sph_.g().getCoefficient(i);
@@ -828,7 +828,7 @@ namespace Uf
 	//	void CoronaJob::CopySPHToSph4f(Sph4f &sph_)
 	//	{
 	//		sph_.resize(MaxSphlDegree);
-	//		for (size_t i = 0; i < sph_.size(); i++)
+	//		for (unsigned i = 0; i < sph_.size(); i++)
 	//		{
 	//			sph_.r().setCoefficient(i, sph[121 * 0 + i]);
 	//			sph_.g().setCoefficient(i, sph[121 * 1 + i]);

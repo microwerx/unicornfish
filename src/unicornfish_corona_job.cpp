@@ -175,7 +175,7 @@ namespace Uf
 		if (!IsFinished() && !IsGEN() && !IsVIZ())
 			return;
 		memset(sph, 0, sizeof(float) * 484);
-		for (size_t i = 0; i < sph_.size(); i++)
+		for (unsigned i = 0; i < sph_.size(); i++)
 		{
 			sph[121 * 0 + i] = sph_.r().getCoefficient(i);
 			sph[121 * 1 + i] = sph_.g().getCoefficient(i);
@@ -187,7 +187,7 @@ namespace Uf
 	void CoronaJob::CopySPHToSph4f(Fluxions::Sph4f &sph_)
 	{
 		sph_.resize(Fluxions::MaxSphlDegree);
-		for (size_t i = 0; i < sph_.size(); i++)
+		for (unsigned i = 0; i < sph_.size(); i++)
 		{
 			sph_.r().setCoefficient(i, sph[121 * 0 + i]);
 			sph_.g().setCoefficient(i, sph[121 * 1 + i]);
