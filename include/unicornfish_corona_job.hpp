@@ -1,41 +1,20 @@
-// SSPHH/Fluxions/Unicornfish/Viperfish/Hatchetfish/Sunfish/Damselfish/GLUT Extensions
-// Copyright (C) 2017 Jonathan Metzgar
-// All rights reserved.
-//
-// This program is free software : you can redistribute it and/or modify
-// it under the terms of the GNU Affero General Public License as
-// published by the Free Software Foundation, either version 3 of the
-// License, or (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-// GNU Affero General Public License for more details.
-//
-// You should have received a copy of the GNU Affero General Public License
-// along with this program.If not, see <https://www.gnu.org/licenses/>.
-//
-// For any other type of licensing, please contact me at jmetzgar@outlook.com
-#ifndef FLUXIONS_CORONA_JOB_HPP
-#define FLUXIONS_CORONA_JOB_HPP
+#ifndef UNICORNFISH_CORONA_JOB_HPP
+#define UNICORNFISH_CORONA_JOB_HPP
 
-#include <string>
+#include <unicornfish_base.hpp>
 #include <fluxions_gte.hpp>
 #include <fluxions_gte_spherical_harmonic.hpp>
-#include <fluxions_simple_scene_graph.hpp>
+#include <fluxions_ssg_scene_graph.hpp>
 #include <unicornfish_corona_scene_file.hpp>
 
-namespace Uf
-{
-	class CoronaJob
-	{
+namespace Uf {
+	class CoronaJob {
 	public:
 		static const std::string exportPathPrefix;
 		static const std::string outputPathPrefix;
 		static const std::string confPathPrefix;
 
-		enum class Type
-		{
+		enum class Type {
 			REF,
 			REF_CubeMap,
 			Sky,
@@ -43,11 +22,11 @@ namespace Uf
 			GEN
 		};
 
-		static Type TypeFromString(const std::string &str) noexcept;
-		static std::string & TypeToString(Type type, std::string & s_type) noexcept;
+		static Type TypeFromString(const std::string& str) noexcept;
+		static std::string& TypeToString(Type type, std::string& s_type) noexcept;
 
 		CoronaJob() {}
-		CoronaJob(const std::string &name, Type jobtype, int arg1 = 0, int arg2 = 0);
+		CoronaJob(const std::string& basename, const std::string& name, Type jobtype, int arg1 = 0, int arg2 = 0);
 		~CoronaJob();
 
 		void EnableHQ() { isHQ = true; }
@@ -57,7 +36,8 @@ namespace Uf
 		constexpr void SetMaxRayDepth(int depth) { maxRayDepth = Fluxions::clamp(depth, 1, 50); }
 		constexpr void SetPassLimit(int limit) { passLimit = Fluxions::clamp(limit, 1, 100); }
 
-		constexpr void SetIgnoreCache(bool bState) { ignoreCache = bState; }
+		void usePreviousRun(bool bState) { usePreviousRun_ = bState; }
+		const bool usePreviousRun() const { return usePreviousRun_; }
 
 		void EnableHDR() { isHDR = true; }
 		void DisableHDR() { isHDR = false; }
@@ -73,16 +53,14 @@ namespace Uf
 		constexpr bool IsGEN() const { return type == Type::GEN; }
 		constexpr bool IsVIZ() const { return type == Type::VIZ; }
 
-		constexpr void SetImageDimensions(int w, int h)
-		{
+		constexpr void SetImageDimensions(int w, int h) {
 			imageWidth = Fluxions::clamp(w, 0, 8192);
 			imageHeight = Fluxions::clamp(h, 0, 8192);
 		}
 
 		constexpr double GetElapsedTime() const { return elapsedTime; }
 
-		constexpr const std::string &GetOutputPath(bool exrPathInstead = false) const
-		{
+		constexpr const std::string& GetOutputPath(bool exrPathInstead = false) const {
 			if (exrPathInstead) {
 				if (isHQ)
 					return hq_output_path_exr;
@@ -96,30 +74,27 @@ namespace Uf
 					return output_path_ppm;
 			}
 		}
-		constexpr const std::string &GetName() const { return scene_name; }
+		constexpr const std::string& GetName() const { return scene_name; }
 
-		constexpr int GetGENLightIndex() const
-		{
+		constexpr int GetGENLightIndex() const {
 			if (IsGEN())
 				return recvLight;
 			return -1;
 		}
-		constexpr int GetVIZSendLightIndex() const
-		{
+		constexpr int GetVIZSendLightIndex() const {
 			if (IsVIZ())
 				return sendLight;
 			return -1;
 		}
-		constexpr int GetVIZRecvLightIndex() const
-		{
+		constexpr int GetVIZRecvLightIndex() const {
 			if (IsVIZ())
 				return recvLight;
 			return -1;
 		}
 
-		void Start(CoronaSceneFile &coronaScene, Fluxions::SimpleSceneGraph &ssg);
-		void CopySPH(const Fluxions::Sph4f &sph);
-		void CopySPHToSph4f(Fluxions::Sph4f &sph);
+		void Start(CoronaSceneFile& coronaScene, Fluxions::SimpleSceneGraph& ssg);
+		void CopySPH(const Fluxions::Sph4f& sph);
+		void CopySPHToSph4f(Fluxions::Sph4f& sph);
 		const int GetCoronaRetval() const { return lastCoronaRetval; }
 		const int GetConvertRetval() const { return lastConvertRetval; }
 
@@ -128,8 +103,7 @@ namespace Uf
 
 		constexpr bool IsJobFinished() const { return finished; }
 		constexpr void MarkJobFinished() { finished = true; }
-		constexpr void MarkJobUnfinished()
-		{
+		constexpr void MarkJobUnfinished() {
 			finished = false;
 			working = false;
 		}
@@ -137,11 +111,10 @@ namespace Uf
 		constexpr void MarkJobWorking() { working = true; }
 
 		std::string ToString() const;
-		void FromString(const std::string &str);
+		void FromString(const std::string& str);
 
 	private:
-		enum class State
-		{
+		enum class State {
 			Error = -1,
 			Ready = 0,
 			Running,
@@ -149,6 +122,7 @@ namespace Uf
 		};
 		State state = State::Ready;
 		Type type = Type::REF;
+		std::string export_path;
 		std::string scene_name;
 		std::string scene_path;
 		std::string output_path_exr;
@@ -165,7 +139,7 @@ namespace Uf
 		int imageHeight = 720;
 		int maxRayDepth = 5;
 		int passLimit = 1;
-		bool ignoreCache = false;
+		bool usePreviousRun_{ true };
 
 		double elapsedTime;
 		bool finished = false;
@@ -182,6 +156,10 @@ namespace Uf
 		int lastConvertRetval = 0;
 
 		bool Run();
+	private:
+		bool _runCorona();
+		bool _runMagickEXRtoPNG();
+		bool _runMagickEXRtoPPM();
 	};
 } // namespace Fluxions
 

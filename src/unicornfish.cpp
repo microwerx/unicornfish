@@ -1,8 +1,8 @@
-#include <unicornfish.hpp>
+#include "unicornfish_pch.hpp"
+#include <unicornfish_base.hpp>
 #include <unicornfish_curl.hpp>
 
-namespace Uf
-{
+namespace Uf {
 	bool Init() {
 		curl_global_init(CURL_GLOBAL_ALL);
 
@@ -14,4 +14,4 @@ namespace Uf
 
 		return true;
 	}
-}
+} // namespace Uf
