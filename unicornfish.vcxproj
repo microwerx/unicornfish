@@ -45,11 +45,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)hatchetfish/include;$(SolutionDir)fluxions-gte/include;$(SolutionDir)fluxions-base/include;$(SolutionDir)fluxions-ssg/include;$(SolutionDir)fluxions/include;$(SolutionDir)starfish/include;$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)hatchetfish/include;$(SolutionDir)fluxions-gte/include;$(SolutionDir)fluxions-base/include;$(SolutionDir)fluxions-ssg/include;$(SolutionDir)fluxions-renderer/include;$(SolutionDir)fluxions/include;$(SolutionDir)starfish/include;$(ProjectDir)include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)hatchetfish/include;$(SolutionDir)fluxions-gte/include;$(SolutionDir)fluxions-base/include;$(SolutionDir)fluxions-ssg/include;$(SolutionDir)fluxions/include;$(SolutionDir)starfish/include;$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)hatchetfish/include;$(SolutionDir)fluxions-gte/include;$(SolutionDir)fluxions-base/include;$(SolutionDir)fluxions-ssg/include;$(SolutionDir)fluxions-renderer/include;$(SolutionDir)fluxions/include;$(SolutionDir)starfish/include;$(ProjectDir)include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
